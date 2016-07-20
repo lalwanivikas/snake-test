@@ -1,0 +1,37 @@
+User stories:
+  - play classic snake game
+  - canvas width is full screen width and height is dynamic as well
+  - custom controls for 4 keys (up, down, right, left) - using device keyboard not possible
+  - fully responsive
+  - display score during play
+  - ability to pause the game incase some chat message pops up
+
+
+Flow:
+  - first screen to prompt user to start the game
+  - game screen
+  - game over screen with final score and option to play again
+
+
+Other points:
+  - button should have active state for feedback - https://developer.chrome.com/multidevice/webview/tipsandtricks
+  - use requestAnimationFrame for better performance - https://css-tricks.com/using-requestanimationframe/
+  - arrows like this http://explosm.net/comics/4361/
+
+Bugs:
+  - Little lag in swipe?
+
+Features:
+  - Snake should not die on colliding with walls
+  - Pause functionality
+
+Code improvements: 
+  - Variable and function naming
+  - Make OBJECTS for snake and food
+
+Solved:
+  - Better colors
+  - Display score when game over
+  - Position of food should be within canvas irrespective of screen size
+  - Make it all one file
+  - Accurate grids - solve by having extra pixels as canvas border
