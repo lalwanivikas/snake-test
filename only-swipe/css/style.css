@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+body {
+  font-size: 100%;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+.btn {
+  background-color: #111;
+  outline: none;
+  border: 0;
+  border-radius: 5px;
+  font-size: 2rem;
+  color: #FFF;
+}
+
+.canvas-container {
+  position: relative;
+}
+
+#gameBoard {
+  background-color: #9CCB95;
+  /*border: 8px solid #222;*/
+}
+
+.start-button {
+  position: absolute;
+  top: calc(50% - 25px);
+  left: calc(50% - 100px);
+  width: 200px;
+  height: 50px;
+}
+
+.control {
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.control:active {
+  background: #58b328;
+}
