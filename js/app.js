@@ -1,6 +1,6 @@
-  /*
-  ** global variables
-  */
+/*
+** global variables
+*/
 var canvas = document.querySelector('#gameBoard');
 var ctx = canvas.getContext('2d');
 var canvasWidth;
@@ -34,7 +34,7 @@ var calculateBoardDimensions = function(num) {
 var setCanvas = (function () {
   
   canvasWidth = calculateBoardDimensions(window.innerWidth);
-  canvasHeight = calculateBoardDimensions(window.innerHeight / 2);
+  canvasHeight = calculateBoardDimensions(window.innerHeight);
   
   canvasBorderThickness = window.innerWidth % 2 === 0 
                           ? (window.innerWidth - canvasWidth) / 2
