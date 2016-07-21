@@ -10,7 +10,7 @@ var snake;
 var direction;
 var food;
 var score = 0;
-var tileSize = 20;
+var tileSize = 10;
 var gameloop;
 var frames = 0;
 
@@ -135,7 +135,7 @@ var paint = function() {
   
   frames++;
   
-  if (frames%8 === 0) {
+  if (frames%6 === 0) {
     
     // clear canvas
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -362,14 +362,14 @@ hiddenInput.addEventListener("input", function(event){
       }
       break;
 
-    case 8:
+    case 2:
       if (direction != 'down') {
         direction = 'up';
         console.log('up');
       }
       break;
 
-    case 2:
+    case 8:
       if (direction != 'up') {
         direction = 'down';
         console.log('down');

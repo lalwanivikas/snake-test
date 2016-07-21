@@ -10,7 +10,7 @@ var snake;
 var direction;
 var food;
 var score = 0;
-var tileSize = 20;
+var tileSize = 10;
 var gameloop;
 var frames = 0;
 
@@ -135,7 +135,7 @@ var paint = function() {
   
   frames++;
   
-  if (frames%8 === 0) {
+  if (frames%6 === 0) {
     
     // clear canvas
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
