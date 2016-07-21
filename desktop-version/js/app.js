@@ -88,7 +88,7 @@ var drawSnake = function() {
       x: i,
       y: 0
     });    
-  } 
+  }
 
 }
 
@@ -135,7 +135,9 @@ var paint = function() {
   
   frames++;
   
-  if (frames%8 === 0) {
+  if (frames%5 === 0) {
+    
+    // console.log(snake);  
     
     // clear canvas
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -153,8 +155,13 @@ var paint = function() {
       snakeY++;
     }
     
-    console.log(snakeX);
-    console.log(snakeY);
+    // console.log(snakeX);
+    // console.log(snakeY);
+
+    
+    /*
+    ** testing for removing wall collision logic
+    */
 
     // if ( snakeX < 0
     //   || snakeX === canvasWidth / tileSize 
@@ -170,10 +177,6 @@ var paint = function() {
     //   return;
 
     // }
-
-    /*
-    ** no wall collision
-    */
 
     if (snakeX === canvasWidth / tileSize) {
       snakeX = 0;
@@ -194,9 +197,8 @@ var paint = function() {
       cancelAnimationFrame(gameloop);
       return;
     }
-    
     /*
-    ** end of no wall collision
+    ** end of test code
     */
 
     if (snakeX === food.x && snakeY === food.y) {
@@ -243,59 +245,70 @@ var init = function() {
 }
 
 
-// initiate game on start button press
+
+
+/*
+** initiate game on start button press
+*/
 var startButton = document.querySelector('#start');
 startButton.addEventListener("click", function() {
   init();
 });
 
-var gameControls = document.querySelectorAll('.control');
 
-for (var i = 0; i < gameControls.length; i++) {
- 
-  gameControls[i].addEventListener("click", function(event){
 
-    buttonPressed = event.target.id;
 
-    switch (buttonPressed) {
+/*
+** keyboard control logic
+*/
 
-      case 'left':
-        if (direction != 'right') {
-          direction = 'left';
-        }
-        console.log('left');
-        break;
+document.addEventListener("keydown", function(event){
 
-      case 'right':
-        if (direction != 'left') {
-          direction = 'right';
-          console.log('right');
-        }
-        break;
+  keyPressed = event.keyCode;
 
-      case 'up':
-        if (direction != 'down') {
-          direction = 'up';
-          console.log('up');
-        }
-        break;
+  switch (keyPressed) {
 
-      case 'down':
-        if (direction != 'up') {
-          direction = 'down';
-          console.log('down');
-        }
-        break;
-    }
-  });
+    case 37:
+      if (direction != 'right') {
+        direction = 'left';
+      }
+      console.log('left');
+      break;
 
-}
+    case 39:
+      if (direction != 'left') {
+        direction = 'right';
+        console.log('right');
+      }
+      break;
 
+    case 38:
+      if (direction != 'down') {
+        direction = 'up';
+        console.log('up');
+      }
+      break;
+
+    case 40:
+      if (direction != 'up') {
+        direction = 'down';
+        console.log('down');
+      }
+      break;
+  }
+});
+
+
+
+
+/*
+** gesture control logic
+** using hammer.js library
+*/
 
 var gestureControls = new Hammer(canvas);
 gestureControls.get('swipe').set({ direction: Hammer.DIRECTION_ALL});
 
-// listen to events...
 gestureControls.on("swipeup swipedown swiperight swipeleft", function(ev) {
   
   console.log(ev.type +" gesture detected.");

@@ -153,23 +153,51 @@ var paint = function() {
       snakeY++;
     }
     
-    console.log(snakeX);
-    console.log(snakeY);
+    // console.log(snakeX);
+    // console.log(snakeY);
 
-    if ( snakeX < 0
-      || snakeX === canvasWidth / tileSize 
-      || snakeY < 0
-      || snakeY === canvasHeight / tileSize 
-      || checkCollision(snakeX, snakeY, snake)) {
+    // if ( snakeX < 0
+    //   || snakeX === canvasWidth / tileSize 
+    //   || snakeY < 0
+    //   || snakeY === canvasHeight / tileSize 
+    //   || checkCollision(snakeX, snakeY, snake)) {
 
+    //   startButton.style.display = "block";
+    //   displayFinalScore();
+
+    //   score = 0;
+    //   cancelAnimationFrame(gameloop);
+    //   return;
+
+    // }
+
+    /*
+    ** no wall collision
+    */
+
+    if (snakeX === canvasWidth / tileSize) {
+      snakeX = 0;
+    } else if (snakeX === -1) {
+      snakeX = canvasWidth / tileSize;
+    }
+
+    if (snakeY === canvasHeight / tileSize) {
+      snakeY = 0;
+    } else if (snakeY === -1) {
+      snakeY = canvasHeight / tileSize;
+    }
+    
+    if (checkCollision(snakeX, snakeY, snake)){
       startButton.style.display = "block";
       displayFinalScore();
-
       score = 0;
       cancelAnimationFrame(gameloop);
       return;
-
     }
+    
+    /*
+    ** end of no wall collision
+    */
 
     if (snakeX === food.x && snakeY === food.y) {
       var tail = {
@@ -305,3 +333,50 @@ gestureControls.on("swipeup swipedown swiperight swipeleft", function(ev) {
         break;
     }
 });
+
+
+/*
+** numpad control logic
+*/
+var hiddenInput = document.querySelector('.hidden-input');
+hiddenInput.addEventListener("input", function(event){
+
+  keyPressed = parseInt(hiddenInput.value);
+  hiddenInput.value = "";
+  
+  console.log(typeof keyPressed);
+  
+  switch (keyPressed) {
+
+    case 4:
+      if (direction != 'right') {
+        direction = 'left';
+      }
+      console.log('left');
+      break;
+
+    case 6:
+      if (direction != 'left') {
+        direction = 'right';
+        console.log('right');
+      }
+      break;
+
+    case 8:
+      if (direction != 'down') {
+        direction = 'up';
+        console.log('up');
+      }
+      break;
+
+    case 2:
+      if (direction != 'up') {
+        direction = 'down';
+        console.log('down');
+      }
+      break;
+  }
+});
+
+
+

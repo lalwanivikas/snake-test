@@ -22,8 +22,7 @@ Bugs:
   - Little lag in swipe?
 
 Features:
-  - Snake should not die on colliding with walls
-  - Pause functionality
+  - make fuzzy logic for buttons on canvas
 
 Code improvements: 
   - Variable and function naming
@@ -35,3 +34,11 @@ Solved:
   - Position of food should be within canvas irrespective of screen size
   - Make it all one file
   - Accurate grids - solve by having extra pixels as canvas border
+  - Snake should not die on colliding with walls - implemented in all versions
+  - Pause functionality - implemented in 'custom controls' version 
+
+Versions:
+- swipe: no collision
+- desktop: no collision
+- custom controls: complete with no collision and pause
+- numpad: no collision - rest wip

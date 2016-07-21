@@ -123,19 +123,11 @@ var checkCollision = function(x, y, array) {
   return false;
 }
 
-var pauseGame = function () {
-  ctx.save();
-}
-
-var resumeGame = function () {
-  ctx.restore();
-}
-
 var paint = function() {
   
   frames++;
   
-  if (frames%8 === 0) {
+  if (frames%5 === 0) {
     
     // clear canvas
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -156,21 +148,50 @@ var paint = function() {
     console.log(snakeX);
     console.log(snakeY);
 
-    if ( snakeX < 0
-      || snakeX === canvasWidth / tileSize 
-      || snakeY < 0
-      || snakeY === canvasHeight / tileSize 
-      || checkCollision(snakeX, snakeY, snake)) {
+    // if ( snakeX < 0
+    //   || snakeX === canvasWidth / tileSize 
+    //   || snakeY < 0
+    //   || snakeY === canvasHeight / tileSize 
+    //   || checkCollision(snakeX, snakeY, snake)) {
 
+    //   startButton.style.display = "block";
+    //   displayFinalScore();
+
+    //   score = 0;
+    //   cancelAnimationFrame(gameloop);
+    //   return;
+
+    // }
+
+    /*
+    ** no wall collision
+    */
+
+    if (snakeX === canvasWidth / tileSize) {
+      snakeX = 0;
+    } else if (snakeX === -1) {
+      snakeX = canvasWidth / tileSize;
+    }
+
+    if (snakeY === canvasHeight / tileSize) {
+      snakeY = 0;
+    } else if (snakeY === -1) {
+      snakeY = canvasHeight / tileSize;
+    }
+    
+    if (checkCollision(snakeX, snakeY, snake)){
       startButton.style.display = "block";
       displayFinalScore();
-
       score = 0;
       cancelAnimationFrame(gameloop);
       return;
-
     }
+    
+    /*
+    ** end of no wall collision
+    */
 
+    
     if (snakeX === food.x && snakeY === food.y) {
       var tail = {
         x: snakeX,
@@ -209,7 +230,7 @@ var init = function() {
 
   drawSnake();
   createFood();
-
+  gameState = 1;
   gameloop = window.requestAnimationFrame(paint);
 
 }
@@ -305,3 +326,37 @@ gestureControls.on("swipeup swipedown swiperight swipeleft", function(ev) {
         break;
     }
 });
+
+
+
+
+/*
+** testing pause functionality
+*/
+var gameState = 0; // 1:running, 0:pause
+
+var pauseGame = function () {
+  cancelAnimationFrame(gameloop);
+  pauseButton.innerHTML = "►";
+  gameState = 0;
+}
+
+var resumeGame = function () {
+  pauseButton.innerHTML = "❚❚";
+  gameState = 1;
+  paint();
+}
+
+
+var pauseButton = document.querySelector('#pause');
+pauseButton.addEventListener("click", function() {
+  if (gameState === 1) {
+    pauseGame();
+  } else {
+    resumeGame();
+  }
+});
+
+/*
+** end of test code
+*/
