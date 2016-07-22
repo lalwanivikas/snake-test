@@ -18,15 +18,22 @@ Other points:
   - use requestAnimationFrame for better performance - https://css-tricks.com/using-requestanimationframe/
   - arrows like this http://explosm.net/comics/4361/
 
+
 Bugs:
-  - Little lag in swipe?
+  - controls size - should not go out of 70% space
+
 
 Features:
-  - make fuzzy logic for buttons on canvas
+  - make fuzzy logic for buttons on canvas - need a new version
+  - blinking cursor in safari webview
+  - left and right arrows in mobile are ugly
+  - swipe should not have any lag
+
 
 Code improvements: 
   - Variable and function naming
   - Make OBJECTS for snake and food
+
 
 Solved:
   - Better colors
@@ -36,9 +43,11 @@ Solved:
   - Accurate grids - solve by having extra pixels as canvas border
   - Snake should not die on colliding with walls - implemented in all versions
   - Pause functionality - implemented in 'custom controls' version 
+  - pause button position
+
 
 Versions:
 - swipe: no collision
 - desktop: no collision
 - custom controls: complete with no collision and pause
-- numpad: no collision - rest wip
+- numpad: no collision
