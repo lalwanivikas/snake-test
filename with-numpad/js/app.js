@@ -34,7 +34,7 @@ var calculateBoardDimensions = function(num) {
 var setCanvas = (function () {
   
   canvasWidth = calculateBoardDimensions(window.innerWidth);
-  canvasHeight = calculateBoardDimensions(window.innerHeight);
+  canvasHeight = calculateBoardDimensions(window.innerHeight / 2);
   
   canvasBorderThickness = window.innerWidth % 2 === 0 
                           ? (window.innerWidth - canvasWidth) / 2
